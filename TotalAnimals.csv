@@ -67,7 +67,6 @@ Year,Quantity,Animal
 2019,2319033,Pigs
 2020,2258046,Pigs
 2021,2577597,Pigs
-2022,,Pigs
 2000,2510900,SheepAndLambs
 2001,2748000,SheepAndLambs
 2002,2940400,SheepAndLambs
@@ -90,4 +89,3 @@ Year,Quantity,Animal
 2019,2319033,SheepAndLambs
 2020,2258046,SheepAndLambs
 2021,2577597,SheepAndLambs
-2022,,SheepAndLambs
