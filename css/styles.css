@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    background-color: grey;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 55px;
+    color:#038714;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #006e18;
+    font-size: 15px;
+}
+
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+    color: #02b159;
+    padding-top: 40px;
+}
+
+.page {
+    background-color: white;
+    padding:50px;
+    width:900px;
+    margin:auto;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    color: #006e18;
+}
+.chart {
+    max-width: 100%;
+    width:100%;
+    height:auto;
+}
+
+.pure-g {
+    padding-bottom: 10px;
+}

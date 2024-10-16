@@ -1,0 +1,76 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Barley Yield in tonnes (2000-2022)"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalCrops.csv"
+    },
+            "transform": [
+                {
+                    "filter": {
+                        "field": "crop", "equal": "Barley"
+                    }
+                }
+            ],
+            "layer": [
+                {
+            "mark": {
+                "type": "area",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "type": "temporal",
+                    "title":null
+                },
+                "y": {
+                    "field": "tonnes", 
+                    "type": "quantitative",
+                    "title": "Total"
+        
+                },
+                "color": {
+                    "field": "crop", 
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["Barley"],
+                        "range": ["#ab07f7"]
+                    }
+                }
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 150,
+                  "dy": -135,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "Highest yield: 14,648,581 tonnes"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 40,
+              "dy": 100,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value": "Lowest yield: 3,864,800 tonnes"},
+              "size": {"value": 13},
+              "color": {"value": "white"}
+              }
+    }
+    ]
+
+}

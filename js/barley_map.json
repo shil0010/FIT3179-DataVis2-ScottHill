@@ -1,0 +1,73 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Tonnes of Barley produced per State 2022",
+    "width":"container",
+    "height":300,
+    "projection": {"type": "equalEarth"},
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/js/STE_2021_AUST_GDA2020.json",
+        "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
+    },
+    "transform": [
+        {
+            "lookup": "properties.STE_NAME21",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/Barley.csv"
+                },
+                "key": "Region",
+                "fields": ["Tonnes"]
+            }
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "geoshape",
+                "tooltip": true
+            },
+            "encoding": {
+                "color": {
+                    "field": "Tonnes",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "quantize",
+                        "domain": [500000, 6000000],
+                        "scheme": "purples"
+                    }
+
+                }
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 10,
+                  "dy": -135,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "Highest yield: 5,758,301 tonnes"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 170,
+              "dy": 120,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value": "No data available for NT & ACT"},
+              "size": {"value": 13},
+              "color": {"value": "black"}
+              }
+    }
+    ]
+
+}

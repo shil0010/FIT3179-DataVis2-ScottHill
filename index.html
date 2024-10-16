@@ -1,12 +1,184 @@
 <!DOCTYPE html>
 <html lan="en">
-    <head>
-        <title>Web Page Title</title>
-    </head>
-    <body>
 
-        <h1>Heading 1</h1>
-        <p>Paragraph 1</p>
+<head>
+    <title>Web Page Title</title>
+    <!-- import vega lite-->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    </body>
+    <!-- import pure.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link style sheet-->
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- title section-->
+
+    <div class="page">
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h1>Changes in Agricultural Production in Australia 2000 - 2022</h1>
+            </div>
+        </div>
+        <!-- general info section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h2>This document displays data from 2000 to 2024 in relation to key agricultural products, namely livestock and crop yields. </h2>
+                <h2>It will showcase how Australia's production of these various agriculture products has changed over the years, focusing particularly on the products which have seen the most growth, both positive and negative. </h2>
+            </div>
+        </div>
+        <!-- total data section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h3>Total Agricultural Production for Australia 2000 - 2022</h3>
+            </div>
+        </div>
+        <!-- total data info section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <p>Of all the livestock raised in Australia Cattle (raised for beef) are BY FAR the most numerous, outnumbering all others by a factor of almost 10!</p>
+                <p>Although total quantities have shifted downwards over the years in most cases (Beef Cattle are down 9% from 2000), the percentage contributions of each type of livestock has remained almost constant.</p>
+                <br>
+                <p>Unlike livestock however, crop production has seen a notable INCREASE in recent years, with most crops seeing significant gains in their total yield (tonnes)</p>
+            </div>
+        </div>
+
+        <!-- total data charts section-->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="AnimalLineChart" class="chart"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="CropLineChart" class="chart"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="AnimalStackedAreaChart" class="chart"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="CropStackedAreaChart" class="chart"></div>
+            </div>
+        </div>
+
+        <!-- Greatest Growth Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h3>Which Product has seen the most growth in recent years</h3>
+            </div>
+        </div>
+        <!-- Greatest Growth Info Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <p>Out of all the agricultural products shown, the Barley crop has exceeded all others in growth, having increased its total yield by roughly 186% since 2000! The second highest growth from any product is a 55% increase in the yield of Oats.</p>
+            </div>
+        </div>
+        <!-- Greatest Growth charts section-->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="GreatestGrowthMap" class="chart"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="GreatestGrowthAreaChart" class="chart"></div>
+            </div>
+        </div>
+
+        <!-- Greatest Decrease Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h3>Which Product has seen the most "negative" growth since 2000?</h3>
+            </div>
+        </div>
+        <!-- Greatest Decrease Info Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <p>Unfortunately not all of Australia's products have done as well as Barley, the number of cattle raised for dairy and beef in Australia have fallen by approximately 32% and 9% respectively since 2000. As an interesting side-note, 60% of all dairy cattle are located in Victoria despite it having one of the lowest land sizes.</p>
+            </div>
+        </div>
+        <!-- Greatest Decrease charts section-->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="GreatestDecreaseMap" class = chart></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="GreatestDecreaseAreaChart" class="chart"></div>
+            </div>
+        </div>
+
+        <!-- Closing Notes Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h3>Key Takeaways</h3>
+            </div>
+        </div>
+        <!-- Closing Notes-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <p>Almost all crops have seen a significant increase in production in recent years, unlike livestock which have mostly seen declines in their numbers.</p>
+                <p>Cattle (Beef) and Barley are both produced / raised in far greater quantities than any other livestock or crop.</p>
+                <p>Percentage contributions of each type of livestock have remained largely unchanged for the past 20 years.</p>
+                <p></p>
+            </div>
+        </div>
+
+        <!-- MetaData Section-->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <h3>MetaData</h3>
+            </div>
+        </div>
+        <!-- Closing Notes-->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <p>Datasource - Aggricultural Commodities, Australia:</p>
+                <p>https://www.abs.gov.au/statistics/industry/agriculture/agricultural-commodities-australia/2021-22#data-downloads </p>
+            </div>
+            <div class="pure-u-1-2">
+                <p>Map Data - Digital boundary files:</p>
+                <p>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files </p>
+            </div>
+        </div>
+    </div>
+
+<!-- javacript-->
+
+    <script type="text/javascript">
+        var AnimalVis1 = "./animals_total_linechart.json";
+        var AnimalVis2 = "./animals_normalised_stacked_area_chart.json"
+        var CropVis1 = "./crops_total_linechart.json"
+        var CropVis2 = "./crops_normalised_stacked_area_chart.json"
+
+        var GrowthVis1 = "./js/barley_map.json"
+        var GrowthVis2 = "./largest_positive_growth_area_chart.json"
+
+        var DecreaseVis1 = "./js/dairy_cattle_map.json"
+        var DecreaseVis2 = "./largest_negative_growth_area_chart.json"
+
+        vegaEmbed('#AnimalLineChart', AnimalVis1, {"actions": false})
+        vegaEmbed('#AnimalStackedAreaChart', AnimalVis2, {"actions": false})
+        vegaEmbed('#CropLineChart', CropVis1, {"actions": false})
+        vegaEmbed('#CropStackedAreaChart', CropVis2, {"actions": false})
+
+        vegaEmbed('#GreatestGrowthMap', GrowthVis1, {"actions": false})
+        vegaEmbed('#GreatestGrowthAreaChart', GrowthVis2, {"actions": false})
+
+        vegaEmbed('#GreatestDecreaseMap', DecreaseVis1, {"actions": false})
+        vegaEmbed('#GreatestDecreaseAreaChart', DecreaseVis2, {"actions": false})
+
+    </script>
+
+
+
+
+</body>
+
 </html>

@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Livestock contributions 2000-2021"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalAnimals.csv"
+    },
+    "layer": [
+        {
+        "mark": {
+                "type": "area",
+                "tooltip":true,
+                "clip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "type": "temporal",
+                    "scale": {"domain": [2000,2021]}
+                },
+                "y": {
+                    "field": "Quantity", 
+                    "type": "quantitative",
+                    "stack":"normalize",
+                    "title": "Fraction of Total"
+
+                },
+                "color": {"field": "Animal", "type": "nominal"}
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 80,
+                  "dy": -90,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "% contributions are quite consistent"},
+                  "size": {"value": 13},
+                  "color": {"value": "white"}
+                  }
+        }
+    ]
+    
+}

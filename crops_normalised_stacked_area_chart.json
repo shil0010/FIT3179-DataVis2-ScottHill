@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Crop contributions 2000 - 2022"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalCrops.csv"
+    },
+    "layer": [
+        {
+        "mark": {
+                "type": "area",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "type": "temporal",
+                    "title":null
+                },
+                "y": {
+                    "field": "tonnes", 
+                    "type": "quantitative",
+                    "stack":"normalize",
+                    "title": "Fraction of Total"
+
+                },
+                "color": {
+                    "field": "crop", 
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["Barley", "Maize", "Oats", "Potatoes", "Wheat"],
+                        "range": ["#ab07f7", "#18ed3f", "#ff0000", "#012a6b", "#f76b07"]
+                    }
+                }
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 130,
+                  "dy": -120,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "Barley's contribution increased from 15 to 27%"},
+                  "size": {"value": 13},
+                  "color": {"value": "white"}
+                  }
+        }
+    ]
+    
+}

@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Quantity of Dairy Cattle per State",
+    "width":"container",
+    "height":300,
+    "projection": {"type": "equalEarth"},
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/js/STE_2021_AUST_GDA2020.json",
+        "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
+    },
+    "transform": [
+        {
+            "lookup": "properties.STE_NAME21",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/DairyCattle.csv"
+                },
+                "key": "Region",
+                "fields": ["Quantity"]
+            }
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "geoshape",
+                "tooltip": true
+            },
+            "encoding": {
+                "color": {
+                    "field": "Quantity",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "log",
+                        "domain": [50000, 1300000],
+                        "scheme": "blues"
+                    }
+                }
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 170,
+                  "dy": 120,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "Highest count: 1,290,448 dairy cattle"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 10,
+              "dy": -135,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value": "No data available for NT & ACT"},
+              "size": {"value": 13},
+              "color": {"value": "black"}
+              }
+    }
+    ]
+
+}

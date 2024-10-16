@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Total Crop Yields in Australia 2000 - 2022"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalCrops.csv"
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "line",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {"field": "Year", "type": "temporal"},
+                "y": {"field": "tonnes", "type": "quantitative"},
+                "color": {
+                  "field": "crop", 
+                  "type": "nominal",
+                  "scale": {
+                      "domain": ["Barley", "Maize", "Oats", "Potatoes", "Wheat"],
+                      "range": ["#ab07f7", "#18ed3f", "#ff0000", "#012a6b", "#f76b07"]
+                  }
+                }
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 120,
+                  "dy": -130,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "Wheat yield experiences extreme fluctuation"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 140,
+              "dy": 120,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value": "Barley yields increased ~ 186%"},
+              "size": {"value": 13},
+              "color": {"value": "black"}
+              }
+    }
+    ]
+
+}

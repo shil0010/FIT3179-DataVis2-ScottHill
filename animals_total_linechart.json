@@ -1,0 +1,52 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Total Livestock in Australia 2000 - 2022"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalAnimals.csv"
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "line",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {"field": "Year", "type": "temporal"},
+                "y": {"field": "Quantity", "type": "quantitative"},
+                "color": {"field": "Animal", "type": "nominal"}
+            }
+        },
+        {
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 30,
+                  "dy": -90,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"value": "~ 10 x more meat Cattle"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 100,
+              "dy": 85,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value": "all other animals have similar totals"},
+              "size": {"value": 13},
+              "color": {"value": "black"}
+              }
+    }
+    ]
+
+}

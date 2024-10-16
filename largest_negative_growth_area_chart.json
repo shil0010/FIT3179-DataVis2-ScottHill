@@ -1,0 +1,89 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Dairy Cattle (2000-2022)"},
+    "width":"container",
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shil0010/FIT3179-DataVis2-ScottHill/refs/heads/main/TotalAnimals.csv"
+    },
+
+            "transform": [
+                {
+                    "filter": {
+                        "field": "Animal", "equal": "DairyCattle"
+                    }
+                }
+            ],
+            "layer": [
+                {
+            "mark": {
+                "type": "area",
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "type": "temporal",
+                    "title":null
+                },
+                "y": {
+                    "field": "Quantity", 
+                    "type": "quantitative",
+                    "title": "Total"
+        
+                },
+                "color": {
+                    "field": "Animal", 
+                    "type": "nominal"
+                }
+            }
+        },
+        {
+            "transform":[
+                  {
+                    "window": [{"op": "rank", "as": "ranking"}],
+                    "sort": [{"field": "Quantity", "order":"descending"}]
+                  },
+                  {"filter": "datum.ranking == 1"},
+                  {"calculate": "'Highest count: ' + datum['Quantity'] + ' dairy cattle' ", "as": "high_count_annotation"}
+                ],
+                "mark": {
+                  "type":"text",
+                  "align": "right",
+                  "dx": 75,
+                  "dy": -135,
+                  "baseline": "middle",
+                  "fontStyle": "italic"
+                },
+                "encoding": {
+                  "text": {"field": "high_count_annotation"},
+                  "size": {"value": 13}
+                  }
+        },
+        {
+            "transform":[
+              {
+                "window": [{"op": "rank", "as": "ranking"}],
+                "sort": [{"field": "Quantity", "order":"ascending"}]
+              },
+              {"filter": "datum.ranking == 1"},
+              {"calculate": "'Lowest count: ' + datum['Quantity'] + ' dairy cattle' ", "as": "low_count_annotation"}
+            ],
+            "mark": {
+              "type":"text",
+              "align": "right",
+              "dx": 140,
+              "dy": -20,
+              "baseline": "middle",
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"field": "low_count_annotation"},
+              "size": {"value": 13},
+              "color": {"value": "white"}
+              }
+    }
+    ]
+
+}
